@@ -139,7 +139,7 @@ cuHALLaR provides users with customizable parameters to fine-tune the solving pr
 | `--lam0_aipp`                | `0.1`              | AIPP initial parameter λ₀.                                                                                                                              |
 | **Hybrid Low-Rank / Hallar** |                    |                                                                                                                                                         |
 | `--maxiter_hlr`              | `10`               | Maximum iterations for the hybrid low-rank method.                                                                                                      |
-| `--maxiter_hallar`           | `1e4`              | Maximum number of outer \ourmethod iterations.                                                                                                          |
+| `--maxiter_hallar`           | `1e4`              | Maximum number of Hallar iterations.                                                                                                                    |
 | **Stopping Criteria**        |                    |                                                                                                                                                         |
 | `--eps_pfeas`                | `1e-5`             | Primal feasibility tolerance (ε_feas).                                                                                                                  |
 | `--eps_gap`                  | `1e-5`             | Relative duality gap tolerance (ε_gap).                                                                                                                 |
