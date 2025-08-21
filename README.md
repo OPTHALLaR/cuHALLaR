@@ -1,6 +1,6 @@
 ## **[cuHALLaR](https://github.com/OPTHALLaR/cuHALLaR)**
 
-cuHALLaR is an enhanced GPU-based first-order method solver written in Julia for low-rank semi-definite programming problems (SDPs). It is developed based on methodologies described in this [paper](https://optimization-online.org/wp-content/uploads/2025/05/SDP_GPU_May19_Revised.pdf). It supports SDPA files and introduces a new file format that allows low-rank factorizations of the objective and constraints.
+cuHALLaR is an enhanced GPU-based first-order method solver written in Julia for low-rank semidefinite programming problems (SDPs). It is developed based on methodologies described in this [paper](https://optimization-online.org/wp-content/uploads/2025/05/SDP_GPU_May19_Revised.pdf). It supports SDPA files and introduces a new file format that allows low-rank factorizations of the objective and constraints.
 
 #### Problem Statement:
 
@@ -112,7 +112,7 @@ cuHALLaR was mainly developed using Red Hat Enterprise Linux 9.5, however it is 
 
 #### Output Format
 
-cuHallar outputs the primal and dual solution as csv files. Option `-p` provides a path for the output primal solution, and `-d` a path to the dual solution. The primal solution output is the lowrank factor $Y \in \mathbb{R}^{n \times r}$, such that $X = YY^\top$. The dual solution file contains one line where the first element is the dual of the trace constraint, while the remaining elements are the dual vector $p \in \mathbb{R}^m$.
+cuHALLaR outputs the primal and dual solution as csv files. Option `-p` provides a path for the output primal solution, and `-d` a path to the dual solution. The primal solution output is the lowrank factor $Y \in \mathbb{R}^{n \times r}$, such that $X = YY^\top$. The dual solution file contains one line where the first element is the dual of the trace constraint, while the remaining elements are the dual vector $p \in \mathbb{R}^m$.
 
 #### Settings
 
@@ -137,9 +137,9 @@ cuHALLaR provides users with customizable parameters to fine-tune the solving pr
 | **AIPP Parameters**          |                    |                                                                                                                                                         |
 | `--maxiter_aipp`             | `5`                | Maximum number of AIPP iterations.                                                                                                                      |
 | `--lam0_aipp`                | `0.1`              | AIPP initial parameter λ₀.                                                                                                                              |
-| **Hybrid Low-Rank / Hallar** |                    |                                                                                                                                                         |
+| **Hybrid Low-Rank / HALLaR** |                    |                                                                                                                                                         |
 | `--maxiter_hlr`              | `10`               | Maximum iterations for the hybrid low-rank method.                                                                                                      |
-| `--maxiter_hallar`           | `1e4`              | Maximum number of Hallar iterations.                                                                                                                    |
+| `--maxiter_hallar`           | `1e4`              | Maximum number of HALLaR iterations.                                                                                                                    |
 | **Stopping Criteria**        |                    |                                                                                                                                                         |
 | `--eps_pfeas`                | `1e-5`             | Primal feasibility tolerance (ε_feas).                                                                                                                  |
 | `--eps_gap`                  | `1e-5`             | Relative duality gap tolerance (ε_gap).                                                                                                                 |
