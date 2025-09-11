@@ -32,7 +32,7 @@ $$
 ### Getting Started
 
 1.  **Download the Release**
-   Download the latest `cuHALLaR.tar.xz` file directly from the **Assets** section. **Important:** Do not download the repository source code (e.g., "Source code (zip)"), as it will not contain the pre-built binary and uncompressing it will fail.
+    Download the latest `cuHALLaR.tar.xz` file directly from the **Assets** section. **Important:** Do not download the repository source code (e.g., "Source code (zip)"), as it will not contain the pre-built binary and uncompressing it will fail.
 
 2.  **Uncompress the Archive**
     In your terminal, change to the directory containing the downloaded file and run:
@@ -122,68 +122,68 @@ Writing output
 Output written to out.txt
 ```
 
-  - **Note:** Even if the Julia application is precompiled, there will still be some dynamic compilation time at runtime due to Julia's Just-In-Time (JIT) compilation mechanism (up to several seconds per run).
+- **Note:** Even if the Julia application is precompiled, there will still be some dynamic compilation time at runtime due to Julia's Just-In-Time (JIT) compilation mechanism (up to several seconds per run).
 
------
+---
 
 ### Environment Requirements
 
 cuHALLaR was mainly developed using Red Hat Enterprise Linux 9.5; however, it is expected to run with a minimum system requirement of Ubuntu 20.04. We have tested the following configurations, all of which successfully run the software:
 
-  - H200 + Red Hat Enterprise Linux 9.5 (“Plow”)
-  - H100 + Red Hat Enterprise Linux 9.5 (“Plow”)
-  - A100 + Red Hat Enterprise Linux 9.5 (“Plow”)
-  - RTX3080 + Ubuntu 22.04 (“Jammy Jellyfish”)
+- H200 + Red Hat Enterprise Linux 9.5 (“Plow”)
+- H100 + Red Hat Enterprise Linux 9.5 (“Plow”)
+- A100 + Red Hat Enterprise Linux 9.5 (“Plow”)
+- RTX3080 + Ubuntu 22.04 (“Jammy Jellyfish”)
 
------
+---
 
 ### Output Format
 
 cuHALLaR outputs the primal and dual solution as CSV files. Option `-p` provides a path for the output primal solution, and `-d` a path to the dual solution. The primal solution output is the low-rank factor $Y \\in \\mathbb{R}^{n \\times r}$, such that $X = YY^\\top$. The dual solution file contains one line where the first element is the dual of the trace constraint, while the remaining elements are the dual vector $p \\in \\mathbb{R}^m$.
 
------
+---
 
 ### Settings
 
 cuHALLaR provides users with customizable parameters to fine-tune the solving process according to specific problem requirements (if needed). Below is a detailed description of each parameter:
 
-| **Option** | **Default Value** | **Description** |
-| :--- | :--- | :--- |
-| **Input / Output** | | |
-| `-i` | none (required) | Path to the input file in HSLR format. |
-| `-p` | `"primal_out.txt"` | Path for the output file containing the primal solution. |
-| `-d` | `"dual_out.txt"` | Path for the output file containing the dual solution. |
-| `-c` | `""` | Path to a configuration file to load options. |
-| `--run_tests` | `false (flag)` | Run test routine with example instances. |
-| **FISTA Parameters** | | |
-| `--maxiter_fista` | `1e4` | Maximum number of ADAP-FISTA iterations. |
-| `--mu_fista` | `0.5` | FISTA parameter μ. |
-| `--chi_fista` | `1e-4` | FISTA parameter χ. |
-| `--L0_fista` | `1.0` | Initial Lipschitz constant for ADAP-FISTA. |
-| `--L_inc_fista` | `2.0` | Lipschitz constant increment factor. |
-| `--sigma_fista` | `0.3` | FISTA parameter σ. |
-| `--err_tol_fista` | `1e-8` | Error tolerance for ADAP-FISTA. |
-| **AIPP Parameters** | | |
-| `--maxiter_aipp` | `5` | Maximum number of AIPP iterations. |
-| `--lam0_aipp` | `0.1` | AIPP initial parameter λ₀. |
-| **Hybrid Low-Rank / HALLaR** | | |
-| `--maxiter_hlr` | `10` | Maximum iterations for the hybrid low-rank method. |
-| `--maxiter_hallar` | `1e4` | Maximum number of HALLaR iterations. |
-| **Stopping Criteria** | | |
-| `--eps_pfeas` | `1e-5` | Primal feasibility tolerance (ε\_feas). |
-| `--eps_gap` | `1e-5` | Relative duality gap tolerance (ε\_gap). |
-| **Penalty Parameters** | | |
-| `--beta0` | `10.0` | Initial penalty parameter β₀. |
-| `--beta_inc` | `1.1` | Increment factor for β. |
-| `--beta_min` | `10.0` | Minimum value for β. |
-| `--beta_max` | `1e11` | Maximum value for β. |
-| **Scaling** | | |
-| `--scale_A` | `1.0` | Scaling factor for constraint matrices. |
-| `--scale_C` | `1.0` | Scaling factor for the cost matrix. |
-| **Miscellaneous** | | |
-| `--verbosity` | `1` | Verbosity level (0: silent, 1: summary steps, 2: detailed, 3: debug). |
-| `--time_limit` | `3600.0` | Time limit in seconds. |
-| `--trace_bound` | `1.0` | τ value for the trace constraint. Used when passing a sparse SDPA format file. When using HSLR format, the trace bound is passed inside the input file. |
+| **Option**                   | **Default Value**  | **Description**                                                                                                                                         |
+| :--------------------------- | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Input / Output**           |                    |                                                                                                                                                         |
+| `-i`                         | none (required)    | Path to the input file in HSLR format.                                                                                                                  |
+| `-p`                         | `"primal_out.txt"` | Path for the output file containing the primal solution.                                                                                                |
+| `-d`                         | `"dual_out.txt"`   | Path for the output file containing the dual solution.                                                                                                  |
+| `-c`                         | `""`               | Path to a configuration file to load options.                                                                                                           |
+| `--run_tests`                | `false (flag)`     | Run test routine with example instances.                                                                                                                |
+| **FISTA Parameters**         |                    |                                                                                                                                                         |
+| `--maxiter_fista`            | `1e4`              | Maximum number of ADAP-FISTA iterations.                                                                                                                |
+| `--mu_fista`                 | `0.5`              | FISTA parameter μ.                                                                                                                                      |
+| `--chi_fista`                | `1e-4`             | FISTA parameter χ.                                                                                                                                      |
+| `--L0_fista`                 | `1.0`              | Initial Lipschitz constant for ADAP-FISTA.                                                                                                              |
+| `--L_inc_fista`              | `2.0`              | Lipschitz constant increment factor.                                                                                                                    |
+| `--sigma_fista`              | `0.3`              | FISTA parameter σ.                                                                                                                                      |
+| `--err_tol_fista`            | `1e-8`             | Error tolerance for ADAP-FISTA.                                                                                                                         |
+| **AIPP Parameters**          |                    |                                                                                                                                                         |
+| `--maxiter_aipp`             | `5`                | Maximum number of AIPP iterations.                                                                                                                      |
+| `--lam0_aipp`                | `0.1`              | AIPP initial parameter λ₀.                                                                                                                              |
+| **Hybrid Low-Rank / HALLaR** |                    |                                                                                                                                                         |
+| `--maxiter_hlr`              | `10`               | Maximum iterations for the hybrid low-rank method.                                                                                                      |
+| `--maxiter_hallar`           | `1e4`              | Maximum number of HALLaR iterations.                                                                                                                    |
+| **Stopping Criteria**        |                    |                                                                                                                                                         |
+| `--eps_pfeas`                | `1e-5`             | Primal feasibility tolerance (ε_feas).                                                                                                                  |
+| `--eps_gap`                  | `1e-5`             | Relative duality gap tolerance (ε_gap).                                                                                                                 |
+| **Penalty Parameters**       |                    |                                                                                                                                                         |
+| `--beta0`                    | `10.0`             | Initial penalty parameter β₀.                                                                                                                           |
+| `--beta_inc`                 | `1.1`              | Increment factor for β.                                                                                                                                 |
+| `--beta_min`                 | `10.0`             | Minimum value for β.                                                                                                                                    |
+| `--beta_max`                 | `1e11`             | Maximum value for β.                                                                                                                                    |
+| **Scaling**                  |                    |                                                                                                                                                         |
+| `--scale_A`                  | `1.0`              | Scaling factor for constraint matrices.                                                                                                                 |
+| `--scale_C`                  | `1.0`              | Scaling factor for the cost matrix.                                                                                                                     |
+| **Miscellaneous**            |                    |                                                                                                                                                         |
+| `--verbosity`                | `1`                | Verbosity level (0: silent, 1: summary steps, 2: detailed, 3: debug).                                                                                   |
+| `--time_limit`               | `3600.0`           | Time limit in seconds.                                                                                                                                  |
+| `--trace_bound`              | `-1.0`             | τ value for the trace constraint. Used when passing a sparse SDPA format file. When using HSLR format, the trace bound is passed inside the input file. |
 
 For example, to set **`time_limit`** to `300.0` and solve a problem, we can execute
 
@@ -193,26 +193,26 @@ For example, to set **`time_limit`** to `300.0` and solve a problem, we can exec
 
 Alternatively, the user may build a configuration file with the options (see the `options.cfg` file in the examples directory) and pass to cuHALLaR with `-c <path_to_file>`.
 
------
+---
 
 ### Developing Team
 
 cuHALLaR is developed by
 
-  - Jacob M. Aguirre: [aguirre@gatech.edu](mailto:aguirre@gatech.edu)
-  - Diego Cifuentes: [dfc3@gatech.edu](mailto:dfc3@gatech.edu)
-  - Vincent Guigues
-  - Renato D.C. Monteiro
-  - Victor Hugo Nascimento: [nascimento.victor.1@fgv.edu.br](mailto:nascimento.victor.1@fgv.edu.br)
-  - Arnesh Sujanani: [a3sujana@uwaterloo.ca](mailto:a3sujana@uwaterloo.ca)
+- Jacob M. Aguirre: [aguirre@gatech.edu](mailto:aguirre@gatech.edu)
+- Diego Cifuentes: [dfc3@gatech.edu](mailto:dfc3@gatech.edu)
+- Vincent Guigues
+- Renato D.C. Monteiro
+- Victor Hugo Nascimento: [nascimento.victor.1@fgv.edu.br](mailto:nascimento.victor.1@fgv.edu.br)
+- Arnesh Sujanani: [a3sujana@uwaterloo.ca](mailto:a3sujana@uwaterloo.ca)
 
------
+---
 
 ### Reference
 
-  - Monteiro, Renato DC, Arnesh Sujanani, and Diego Cifuentes. "A low-rank augmented Lagrangian method for large-scale semidefinite programming based on a hybrid convex-nonconvex approach." arXiv preprint arXiv:2401.12490 (2024).
+- Monteiro, Renato DC, Arnesh Sujanani, and Diego Cifuentes. "A low-rank augmented Lagrangian method for large-scale semidefinite programming based on a hybrid convex-nonconvex approach." arXiv preprint arXiv:2401.12490 (2024).
 
-  - Aguirre, Jacob M., et al. "cuHALLaR: A GPU Accelerated Low-Rank Augmented Lagrangian Method for Large-Scale Semidefinite Programming." arXiv preprint arXiv:2505.13719 (2025).
+- Aguirre, Jacob M., et al. "cuHALLaR: A GPU Accelerated Low-Rank Augmented Lagrangian Method for Large-Scale Semidefinite Programming." arXiv preprint arXiv:2505.13719 (2025).
 
 <!-- end list -->
 
