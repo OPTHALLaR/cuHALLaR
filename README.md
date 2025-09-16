@@ -157,7 +157,7 @@ cuHALLaR provides users with customizable parameters to fine-tune the solving pr
 | `--run_tests`                | `false (flag)`     | Run test routine with example instances.                                                                                                                |
 | **FISTA Parameters**         |                    |                                                                                                                                                         |
 | `--maxiter_fista`            | `1e4`              | Maximum number of ADAP-FISTA iterations.                                                                                                                |
-| `--mu_fista`                 | `0.5`              | FISTA parameter μ.                                                                                                                                      |
+| `--mu_fista`                 | `0.75`              | FISTA parameter μ.                                                                                                                                      |
 | `--chi_fista`                | `1e-4`             | FISTA parameter χ.                                                                                                                                      |
 | `--L0_fista`                 | `1.0`              | Initial Lipschitz constant for ADAP-FISTA.                                                                                                              |
 | `--L_inc_fista`              | `2.0`              | Lipschitz constant increment factor.                                                                                                                    |
@@ -174,7 +174,7 @@ cuHALLaR provides users with customizable parameters to fine-tune the solving pr
 | `--eps_gap`                  | `1e-5`             | Relative duality gap tolerance (ε_gap).                                                                                                                 |
 | **Penalty Parameters**       |                    |                                                                                                                                                         |
 | `--beta0`                    | `10.0`             | Initial penalty parameter β₀.                                                                                                                           |
-| `--beta_inc`                 | `1.1`              | Increment factor for β.                                                                                                                                 |
+| `--beta_inc`                 | `1.5`              | Increment factor for β.                                                                                                                                 |
 | `--beta_min`                 | `10.0`             | Minimum value for β.                                                                                                                                    |
 | `--beta_max`                 | `1e11`             | Maximum value for β.                                                                                                                                    |
 | **Scaling**                  |                    |                                                                                                                                                         |
